@@ -4,7 +4,7 @@ shortname: Malte
 avatar: /static/avatar.jpg
 occupation: Founder
 company: Wagenbach Industries 
-email: contact@karanpratapsingh.com
+email: malte@joshwagenbach.com
 twitter: https://twitter.com/joshwagenbach
 linkedin: https://www.linkedin.com/in/Maltewagenbach
 github: https://github.com/
