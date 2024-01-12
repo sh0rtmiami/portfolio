@@ -1,22 +1,22 @@
 ---
-name: Karan Pratap Singh
-shortname: Karan
+name: Malte Wagenbach
+shortname: Malte
 avatar: /static/avatar.jpg
-occupation: Software Engineer
-company: Guardian Life
-resume: /static/karan_resume.pdf
+occupation: Founder
+company: Wagenbach Industries 
 email: contact@karanpratapsingh.com
-twitter: https://twitter.com/karan_6864
-linkedin: https://www.linkedin.com/in/karan99
-github: https://github.com/karanpratapsingh
+twitter: https://twitter.com/joshwagenbach
+linkedin: https://www.linkedin.com/in/Maltewagenbach
+github: https://github.com/
 ---
 
-A software engineer who aims to evolve, innovate, and inspire through technology.
+I've dedicated my professional journey to harmonizing innovation, ecology, and the human experience. From my advocacy for Heliogenesis — a vision where technology and nature sing in tandem — to my passion for crafting the perfect all-in-one sports drink with le melo, I believe in the power of synergy.
 
-Currently, I am working as a Senior Software Engineer at [Guardian Life](https://www.guardianlife.com).
+ [Heliogenesis](https://www.heliogenesis.io).
 
-Previously, I was a Software Engineer at [Curebase](https://www.curebase.com) where I contributed to the creation of a decentralized clinical trial platform and scaling infrastructure with an emphasis on security, HIPAA compliance, and GDPR compliance.
+My recent venture, the Anima Mundi Newsletter, is a testament to my commitment to delving deep into the nuances of our collective human experience. Through it, I'm synthesizing my thoughts and feelings on topics pivotal to well-rounded human existence, both on the individual and collective fronts. ---> www.animamundi.substack.com
 
-Prior to that, I worked with the Digitization Program Office (DPO) at the [Smithsonian Institution](https://www.si.edu) as a consulting Full Stack Engineer in collaboration with the Office of the Chief Information Officer (OCIO).
+As I navigate the evolving terrain of civilization's future, my mission remains consistent: to build, share, and inspire solutions that cater to holistic well-being and sustainable progress.
 
-Outside of work, I've written more than 50 technical articles that have received over 1 million views. I've self-published two books, worked on US patents, and made contributions to open-source projects like Meta's [React Native (v0.60)](https://reactnative.dev/blog/2019/06/12/react-native-open-source-update).
+Building Wagenbach Industries for the next Civilisation....
+
