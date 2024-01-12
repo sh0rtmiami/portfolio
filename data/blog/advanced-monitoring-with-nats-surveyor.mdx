@@ -1,145 +1,83 @@
 ---
-title: 'Advanced Monitoring with NATS surveyor'
-date: '2022-04-15'
-tags: ['nats', 'distributedsystems', 'monitoring']
+title: 'Adieu to 2023, the Year When Western Industrial Power Wavered'
+date: '2023-12-31'
+tags: ['climate change', 'collapse', 'Growth']
 draft: false
-summary: 'Learn how to monitor your NATS clusters with NATS surveyor'
-images: ['/static/blogs/advanced-monitoring-with-nats-surveyor.png']
+summary: ''
+images: 
 authors: ['default']
 ---
 
-In this article, we'll set up [nats-surveyor](https://github.com/nats-io/nats-surveyor) for advanced monitoring of our [NATS servers](https://github.com/nats-io/nats-server) through [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/).
+Adieu to 2023, the Year When Western Industrial Power Wavered
 
-### What is NATS Surveyor?
+I meant to send this last year, but it completely slipped my mind. 2023 unfolded as a pivotal year, marking the diminishing power of western industrial civilization. The looming issue of peak oil came to the forefront, but was quickly dismissed. Renewable energy sources, once celebrated as the solution for the future, started to show their limitations. The once solid control of the West started to crack, setting the stage for a world with multiple powers. However, this significant change remained unnoticed by the public. The year signaled an end to the long-standing western-led world order and real economic growth. Now, we're left wondering: are we on the brink of a major shift in our society?
 
-![setup](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zd2x79at8dmnnjkcox4g.png)
+The year was marred by tumultuous events. Conflicts in Eastern Europe and the Middle East intensified, claiming countless lives and decimating livelihoods. These geopolitical frictions were deeply rooted in the depletion of resources, a recurring theme in an aging industrial civilization. Military strategies in resource-rich regions aimed at preserving global supremacy and control over resource flows. Notably, mainstream media remained silent on these developments, revealing the intricate nexus between media and the military-political-industrial complex. The disconnection between the political elite and the populace's realities became increasingly evident. The relentless pursuit of global hegemony continued, despite dwindling military and industrial capabilities. This stagnation in energy production and economic growth signals a foreboding future for an expansion-obsessed entity, particularly when overshadowed by emerging powers.
 
-NATS surveyor polls the NATS server for [Statz](https://docs.nats.io/running-a-nats-service/nats_admin/monitoring#monitoring-endpoints) messages to generate data for Prometheus. This allows a single exporter to connect to any NATS server and get an entire picture of a NATS deployment without requiring extra monitoring components or sidecars.
 
-It's really powerful as we can now just connect the data generated for [Prometheus](https://prometheus.io/) and setup dashboards on observability platforms like [Grafana](https://grafana.com/).
+Countries differ in how much electricity they produce. People once thought that electricity could power an entire economy, but that's not really true. Since 2005, the world's most developed countries, known as the G7, haven't increased their electricity production much. This is worrying. On the other hand, China has been producing more electricity than the EU since 2007, more than the US since 2010, and even more than the whole G7 since 2020. This shows that the Western countries are not the strongest economic powers anymore.
 
-### Setup
+Also, many companies that make energy from things like the sun and wind are losing money and stopping their projects. This is happening even though they get help from the government. If making energy from these sources was really cheap, these companies wouldn't have these problems. When a business idea doesn't work out financially, it leads to money troubles. This situation is not related to the fact that climate change is a big problem that could end our way of living. The way our economy works, called capitalism, tends to use up all the cheap resources available and then fails. But, in the meantime, it can lead to some really interesting times, like the past year.
 
-Let's setup our local super cluster and start our surveyor service.
+#1. We're going to see a lot more wind turbines and solar panels being built. However, this could make our electricity system weaker and more likely to have blackouts. This is because the power from these sources isn't always steady. By the end of the year, using these renewable energy sources might not be as beneficial as it used to be in many places.
 
-**Local cluster**
+The International Energy Agency reports that renewable energy will grow a lot in 2023, adding 107 gigawatts, which is the biggest increase ever. But, some of the electricity from wind and solar power can't be used because our current power systems are still mostly designed for fossil fuels and can't handle all this new green energy. This problem isn't huge yet, as only about 1.5% to 4% of renewable energy is being wasted in big markets. 
 
-To setup our local super cluster, we can use [this repo](https://github.com/ColinSullivan1/nats-local-supercluster.git). Here's the topology.
+Princeton University predicts that the U.S. will need to increase its electricity transmission system by 60% by 2030. The New York Times notes the challenge of this expansion, considering the current power grid took over a century to build. This major upgrade, completed in a much shorter time, is a significant task. The Princeton study also mentions that to double the power grid by 2030, the rate of construction in the transmission sector must also double.
 
-```bash
-$ git clone https://github.com/ColinSullivan1/nats-local-supercluster.git
-$ cd nats-local-supercluster
-$ ./start_supercluster.sh
-```
+Switching from a fossil fuel-based grid to a renewable one is expected to be costly, estimated at $100 trillion by 2050. This transition, however, doesn't promise additional economic advantages. The new grid would continue to supply continuous electricity to industries and homes, which are increasingly shifting away from fossil fuels. Despite the change in energy sources, the demand for electricity remains high, and consumers are expected to continue paying similar taxes and fees as before.
 
-![supercluster](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jcp2i9gw3osfglyn7at3.png)
 
-**Surveyor**
+2# Even though our leaders really want to boost the amount of goods and services to grow the economy, oil production will mostly stay the same in 2023. It won't reach its highest level again, which was the amount produced in November 2018, five years earlier.
 
-Now that our local super cluster is up and running, we can setup [nats-surveyor](https://github.com/nats-io/nats-surveyor).
+Like the old saying: a picture can say as much as a thousand words. So, here it is:
 
-For now, we'll do it with [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/).
 
-_Note: We can also install `nats-surveyor` directly from the [Github releases](https://github.com/nats-io/nats-surveyor/releases) as well_
+Political conflicts and trade bans will definitely lower oil production, almost ensuring we won't produce more oil than we did in 2018 sustainably. Some news outlets will quietly acknowledge that we've reached the maximum oil supply, but this will be overshadowed by optimistic discussions about how we don't really need fossil fuels.
 
-```bash
-$ git clone https://github.com/nats-io/nats-surveyor.git
-$ cd nats-surveyor/docker-compose
-$ ./survey.sh "nats://$(ipconfig getifaddr en0):4000" 9 ../../nats-local-supercluster/auth/nkeys/creds/myoperator/SYS/SYS.creds
-[+] Running 3/0
- ⠿ Container nats-surveyor  Created                                                      0.0s
- ⠿ Container prometheus     Created                                                      0.0s
- ⠿ Container grafana        Created                                                      0.0s
-Attaching to grafana, nats-surveyor, prometheus
-...
-```
+Oil production in 2023 hasn't beaten its highest record set in November 2018. It might still increase in the next few years, but it's very doubtful that these increases will last long. Most of the growth in the last 15 years was due to shale oil in the US, and now, they're using all they've got. They're extracting as much as possible to keep oil prices low, especially with the upcoming election and for political reasons (since the price cap didn't work out well). Also, the idea of 'peak oil' has been acknowledged and then quickly downplayed. Energy experts are paying attention to this. Bob McNally, who used to advise President George W Bush and now heads Rapidan Energy Group, shared his insights with the Financial Times.
 
-_Notice how we use_ `ipconfig getifaddr en0` to get the current IP of the system and _`SYS.creds` with NATS surveyor._
+"If our need for oil turns out to be greater than what current predictions suggest, then we're in for major trouble. We would face a time of economic disaster, political instability, and drastic ups and downs. In such times, you'd find yourself hoping for more shale oil."
 
-**Generating demo data**
+In 2023, the world moved closer to a future where we're not only at the highest point of oil production, but we've also gone past the point where oil gives us more energy than it takes to produce, especially in transportation fuels. This makes the future seem even more challenging. We should get ready for times that could really shake up the economy and cause political instability, along with big ups and downs.
 
-For generating traffic we can use the `nats bench` command
+#4 "LNG (Liquefied Natural Gas) supplies to Europe will continue to be unpredictable and won't be enough to replace the gas we used to get through pipelines. The panic we saw over gas storage and prices in 2022 won't happen again. Politicians will avoid talking about this issue because it's too embarrassing and troubling.
 
-_Note: Learn more about NATS CLI in the previous [article](https://karanpratapsingh.com/blog/introduction-nats-cli)._
+At the same time, more and more people and businesses in Europe won't be able to pay for natural gas and electricity, so they'll start turning them off. This will lead to a big recession in the EU, which will be called 'short and mild'. The real impact will be hidden by adjusted GDP numbers that show a small decrease of 2%, even though energy use drops by 20%. For those who know that energy drives the economy, this will be a clear sign of a huge economic crisis, the biggest the region has ever faced. For most people, it will seem like ongoing inflation and increasing struggles, and they'll blame it on bad and corrupt leaders."
 
-```bash
-$ nats bench -s 127.0.0.1:4000 --msgs 100000000 --pub 1 --sub 1 --creds ../../nats-local-supercluster/auth/nkeys/creds/myoperator/myaccount/myuser.creds subject
-16:38:53 Starting pub/sub benchmark [subject=subject, msgs=100,000,000, msgsize=128 B, pubs=1, subs=1]
-16:38:53 Starting subscriber, expecting 100,000,000 messages
-16:38:53 Starting publisher, publishing 100,000,000 messages
-Finished     40s [==========================================] 100%
-Finished     40s [==========================================] 100%
 
-NATS Pub/Sub stats: 4,924,665 msgs/sec ~ 601.16 MB/sec
- Pub stats: 2,462,354 msgs/sec ~ 300.58 MB/sec
- Sub stats: 2,462,346 msgs/sec ~ 300.58 MB/sec
-```
+EU gas prices. Source 
 
-_Yes, we just transferred 100 Million messages in just 40s alongside running a super cluster on the same machine! NATS has amazing performance._
+The numbers in 2023 tell a clear story. There wasn't any panic about natural gas prices or storage in Europe, but the price of this important resource was still three times higher than usual and four times more than in the US. In response, LNG (Liquefied Natural Gas) exports and shale oil shipments reached record highs. It's surprising how a war in Europe could benefit the fossil fuel industry so much.
 
-We can also use `nats bench` with `--pubsleep` flag to simulate real-time traffic in the background while we look at the dashboards.
+Even with high shipments and full storage, gas demand in the European Union dropped by 19–22% in the first nine months of 2023. This isn't surprising since many industries in Europe are shutting down. Chemical, metal, and fertilizer factories have closed, greatly reducing the real economic output. The ifo Institute reported that the manufacturing sector saw a significant drop in business conditions and expectations, with energy-heavy industries struggling the most and overall orders decreasing.
 
-```bash
-$ nats bench -s 127.0.0.1:4000 --msgs 100000000 --pubsleep 1ms --pub 1 --sub 1 --creds ../../nats-local-supercluster/auth/nkeys/creds/myoperator/myaccount/myuser.creds subject
-14:24:20 Starting pub/sub benchmark [subject=subject, msgs=100,000,000, msgsize=128 B, pubs=1, subs=1, js=false, pubsleep=1ms, subsleep=0s]
-14:24:20 Starting subscriber, expecting 100,000,000 messages
-14:24:20 Starting publisher, publishing 100,000,000 messages
-Receiving    18s [--------------------------------------------------------------]   0%
-Publishing   18s [--------------------------------------------------------------]   0%
-```
+As a consequence, the International Energy Agency (IEA) predicts a 4% decrease in diesel demand in Germany for 2023, which is about 40,000 barrels per day. Since diesel is mainly used by trucks and heavy machines, this decrease is a strong indicator of a corresponding drop in real economic activity.
 
-### Monitoring
+When you check the GDP numbers, you won't see any of these issues. As industries shut down and people spend less due to rising prices, the drop in GDP has been balanced out by a rise in financialization. This is when financial markets, institutions, and leaders have more control over the economy and its policies. I must say, I didn't fully appreciate how well the financial elite could present a big economic decline as just a small dip in Germany (-0.5%) and even show growth in the EU (0.7%). They did a good job at that.
 
-Now we should be able to go to [Grafana](https://grafana.com/) running on `[localhost:3000/dashboards](http://localhost:3000/dashboards)` and see all the available monitoring dashboards.
+#5 "The Western world, along with the era of oil that fueled its growth, has reached its limits. Its attempt to expand eastward in 2022 hit a dead end, despite many warnings from both inside and outside. The war that followed has caused the death and injury of hundreds of thousands and destroyed a whole country. By 2023, when the West faces an expected military failure, this failed attempt to expand will be renamed as a 'peacekeeping mission'."
 
-_Note: You might be presented with a login screen, the default user is `admin` and the password is `admin`_
+This situation is complicated. The military failure that was expected did happen in the summer, resulting in the loss of the third army led by the West, after the first two were defeated. During the widely publicized counteroffensive in spring, summer, and fall, many soldiers died unnecessarily as they marched on foot towards well-defended positions across minefields without air support. This defeat was a major blow, showing that Western weapons, training, and strategies were not up to the task. It drained a nation of its remaining resources.
 
-Here we can see we have different dashboards such as Clients, Clusters, NATS Overview, Network Usage, Super Cluster, etc. So let's explore these dashboards one by one!
+On the other hand, the predicted "peacekeeping mission" and the creation of a demilitarized zone didn't occur as I had thought. What we see now is the potential for complete state failure and collapse. Believing that a military can succeed without enough ammunition, soldiers, and a good plan is not useful. Also, believing our own false propaganda about similar casualty numbers on the other side doesn't change the reality. The truth is, the Western political leaders, in a failed effort to overthrow a major opponent and take its resources, have destroyed another country, caused its people to leave, and pushed Europe towards losing its industries. Now, the Western military alliance is facing a humiliating defeat, risking its total breakdown.
 
-![dashboard](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/i2w6b06py84498apzkdj.png)
+2024
 
-**Clients**
+Just like I said last year, it seems more and more like the end of our global industrial civilization will happen unevenly, similar to the fall of the Roman Empire. Like Rome, the western part of our world is likely to break down under various pressures before the Eastern part. But this time, we won't have to wait hundreds of years for both halves to fall.
 
-In the client dashboard, we can monitor things like slow consumers, subscriptions, connections per second, and much more.
+We've witnessed the peak of Western civilization and are approaching the peak of industrial civilization as a whole. For most people, this change will happen slowly over many years — hopefully not ending in a catastrophic event. It's smart to have extra food and water, but hiding in a bunker won't work for this long-term crisis. Instead, building a network of friends, family, and neighbors, learning useful skills, and finding alternative ways to earn money is a better strategy.
 
-![clients](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kg9txknr6z9xx54ai9gc.png)
+To end, I want to quote Dr. Tim Morgan, former head of research at Tullett Prebon, from his blog Surplus Energy Economics. He said that in 2024, he hopes for a return to reality. It's like we're in a fantasy world where the economy grows without really growing. In this world, debt doesn't matter, making money from nothing isn't bad, and we can borrow and print money without problems.
 
-**Clusters**
+Technology seems to ignore basic science, and we think we can power our economy with less powerful energy sources. Famous inventors like Carl Benz and the Wright Brothers were apparently wrong to use petroleum instead of wind power. This strange world is more like the artwork of W. Heath Robinson and Salvador Dalí than the realism of Rembrandt and Nicholas Pocock.
 
-In the cluster dashboard, we can see how many clusters we are running with bandwidth and messages per second.
+Expect to hear more unrealistic statements from Western leaders, more attempts to control what we say, more wars, and more profits for the very rich at the expense of ordinary people. There will be more climate change and higher temperatures than ever. I won't make specific predictions this time, as this article is already quite long. My advice is to use this time to build resilience but also enjoy the beauty of our world. Live your life to the fullest because you only get one chance.
 
-![clusters](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kibtmsthb54qofkn14h8.png)
+Finally, thank you for all your support in 2023. You really made a difference. 
 
-**Overview**
+Until next time,
 
-The overview dashboard provides basic information about how many servers and clusters we are running with route or gateway connections.
+Malte 
 
-_Check out that insane 300k messages/sec, and that's on a development machine!_
-
-![overview](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/efpln8xw2i1r8uh7vqdn.png)
-
-**Network Usage**
-
-The network dashboard is all about how much data is being sent or received in our clusters.
-
-![network usage](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/f2z6r4cnhmqec3v7hkyd.png)
-
-**Node Resource Usage**
-
-This dashboard provides information about individual nodes and provides metrics like CPU and memory usage of our nodes.
-
-![node resource usage](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ei4kh7ud3lk8g6one3kp.png)
-
-**Super Cluster**
-
-This dashboard works at the super cluster level and provides metrics like super cluster bandwidth, connections, message rate, and much more.
-
-This makes it really easy to monitor multiple super clusters.
-
-![superclusters](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/i3gy392beuczimtwlw2d.png)
-
-### Conclusion
-
-In this article, we set up NATS Surveyor, which is an incredible tool that makes it easy to setup monitoring for our NATS services as easily as a single command. It's a must have if you're running distributed systems with NATS at scale. Make sure to checkout the [docs](https://docs.nats.io/) for more info.
-
-I hope this article was helpful, feel free to [reachout](https://karanpratapsingh.com?action=contact) to me if you face any issues. Have a great day!
+PS: Our Online Event about Heliogenesis is next Friday join us www.heliogenesis.io
